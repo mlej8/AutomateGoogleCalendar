@@ -1,6 +1,6 @@
 # AutomateGoogleCalendar
 
-## Why automate the Google Calendar?
+## Why automate Google Calendar?
 
 Imagine having to create over a thousand individual events with different name, location, start time, end time and description in your team's Google Calendar. This can be a a tedious and very time consuming task. Are you looking for a smarter and more effective way to get the paperwork done? 
 
