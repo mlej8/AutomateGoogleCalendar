@@ -15,11 +15,15 @@ This project utilises Selenium to scrap data on soccer events from http://www.ts
 ```
 git clone https://github.com/mlej8/AutomateGoogleCalendar.git
 ```
-2. Install the dependencies of this project using: 
+2. Install the dependencies of this project and create a virtual environment using: 
 ```
-pip install -r requirements.txt
+$ pipenv install
 ```
-3. Install a **ChromeDriver that is compatible to the version of your ChromeBrowser** in the InstagramBot folder on https://chromedriver.chromium.org/downloads
+3. Activate virtual environment that pipenv generated:
+```
+$ pipenv shell
+```
+4. Install a **ChromeDriver that is compatible to the version of your ChromeBrowser** in the AutomateGoogleCalendar/ folder on https://chromedriver.chromium.org/downloads
 ### Create Google Developer Console Project
 4. Visit Google Developer Console and login using you Google Account at: https://console.developers.google.com/
 5. Create a new project named AutomateGoogleCalendar
@@ -30,6 +34,11 @@ pip install -r requirements.txt
 9. Run oauth2_setup.py to get an Access token from Google. This script will store this access token at AutomateGoogleCalendar/Credentials/
 10. Run event_creator.py to create all the event in your Google Calendar
 11. Delete all events using delete_events.py
+### Exit Virtual Environment
+13. Exit virtual environment
+```
+$ exit
+```
 ## Built With
 * [Selenium](https://www.seleniumhq.org/) - Web Browser Automation Framework
 * [Google Calendar API](https://developers.google.com/calendar/) - Module to work with Google Calendar
