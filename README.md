@@ -23,7 +23,6 @@ $ pipenv install --ignore-pipfile
 ```
 $ pipenv shell
 ```
-4. Install a **ChromeDriver that is compatible to the version of your ChromeBrowser** in the AutomateGoogleCalendar/ folder on https://chromedriver.chromium.org/downloads
 ### Create Google Developer Console Project
 4. Visit Google Developer Console and login using you Google Account at: https://console.developers.google.com/
 5. Create a new project named AutomateGoogleCalendar
@@ -35,7 +34,7 @@ $ pipenv shell
 10. Run event_creator.py to create all the event in your Google Calendar
 11. Delete all events using delete_events.py
 ### Exit Virtual Environment
-13. Exit virtual environment
+12. Exit virtual environment
 ```
 $ exit
 ```

@@ -1,9 +1,14 @@
 from selenium import webdriver
 from datetime import datetime, timedelta
 import re 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 
 # Instantiating a Chrome driver object
-driver = webdriver.Chrome(executable_path= r"chromedriver.exe")
+driver = webdriver.Chrome(ChromeDriverManager().install())
+wait = WebDriverWait(driver,10)
 driver.implicitly_wait(30)                                                             # Setting an implicit wait of 30 seconds. It is good practice to set up an implicit wait right after the driver was created to avoid "ElementNotFound" errors and give the browsermore time to load.  
 driver.maximize_window()                                                               # Maximize window
 
@@ -11,20 +16,24 @@ driver.maximize_window()                                                        
 driver.get("http://www.tsisports.ca/tsi/ligue.aspx")
 
 # Navigate to Ligues
-driver.find_element_by_xpath('//a[@href="Ligues.aspx"]').click()
+ligues = wait.until(EC.element_to_be_clickable((By.XPATH,'//a[@href="Ligues.aspx"]')))
+ligues.click()
 
 # Navigate to PLSQ Ligue
-driver.find_element_by_xpath('(//span[contains(text(),"PLSQ")]//preceding-sibling::a)[1]').click()
+# driver.find_element_by_xpath('(//span[contains(text(),"PLSQ")]//preceding-sibling::a)[1]').click()
+plsq = wait.until(EC.element_to_be_clickable((By.XPATH,'(//span[contains(text(),"PLSQ")]//preceding-sibling::a)[1]')))
+plsq.click()
 
 # Change language to English 
-driver.find_element_by_xpath("//a[text()=\"EN\"]").click()
+plsq = wait.until(EC.element_to_be_clickable((By.XPATH,"//a[text()=\"EN\"]")))
+plsq.click()
 
 # Navigating to specific team 
 driver.find_element_by_xpath('//a[contains(text(), "Standings")]').click()                   # click on Standings drop-down menu
 driver.find_element_by_xpath('//a[@href="l_classam.aspx"]').click()                          # click on "Standings per division" 
 driver.find_element_by_xpath('//a[text()="PLSQ-M"]').click()                                 # click on "PLSQ-M"
 driver.find_element_by_xpath("(//span[text()='Validated Standing']//parent::a)[1]").click()  # click on "Validated Standing"
-driver.find_element_by_xpath("//a[contains(text(),\"FC Gatineau\")]").click()                          # click on FC Gatineau 
+driver.find_element_by_xpath("//a[contains(text(),\"FC Gatineau\")]").click()                # click on FC Gatineau 
 driver.switch_to.window(driver.window_handles[1])                                            # switch focus to new tab
 
 # Creating an empty dictionary that will store data 
